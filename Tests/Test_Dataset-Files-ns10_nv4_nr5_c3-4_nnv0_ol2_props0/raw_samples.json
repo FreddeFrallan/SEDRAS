@@ -1,0 +1,162 @@
+[
+  {
+    "assignment": {
+      "V0": 3,
+      "V1": 1,
+      "V2": 3,
+      "V3": 2
+    },
+    "score": 0.5797854372982433,
+    "label": 0,
+    "instance_text": null,
+    "instance_label_text": null,
+    "instance_type": null,
+    "numerical_values": {},
+    "property_labels": {},
+    "property_scores": {}
+  },
+  {
+    "assignment": {
+      "V0": 0,
+      "V1": 2,
+      "V2": 2,
+      "V3": 1
+    },
+    "score": 0.49539874858509925,
+    "label": 1,
+    "instance_text": null,
+    "instance_label_text": null,
+    "instance_type": null,
+    "numerical_values": {},
+    "property_labels": {},
+    "property_scores": {}
+  },
+  {
+    "assignment": {
+      "V0": 0,
+      "V1": 1,
+      "V2": 0,
+      "V3": 0
+    },
+    "score": 0.7612255940310596,
+    "label": 0,
+    "instance_text": null,
+    "instance_label_text": null,
+    "instance_type": null,
+    "numerical_values": {},
+    "property_labels": {},
+    "property_scores": {}
+  },
+  {
+    "assignment": {
+      "V0": 2,
+      "V1": 0,
+      "V2": 1,
+      "V3": 3
+    },
+    "score": 0.34715512793485015,
+    "label": 1,
+    "instance_text": null,
+    "instance_label_text": null,
+    "instance_type": null,
+    "numerical_values": {},
+    "property_labels": {},
+    "property_scores": {}
+  },
+  {
+    "assignment": {
+      "V0": 2,
+      "V1": 0,
+      "V2": 3,
+      "V3": 3
+    },
+    "score": 0.5718214101978195,
+    "label": 0,
+    "instance_text": null,
+    "instance_label_text": null,
+    "instance_type": null,
+    "numerical_values": {},
+    "property_labels": {},
+    "property_scores": {}
+  },
+  {
+    "assignment": {
+      "V0": 2,
+      "V1": 2,
+      "V2": 3,
+      "V3": 1
+    },
+    "score": 0.5380221191304599,
+    "label": 0,
+    "instance_text": null,
+    "instance_label_text": null,
+    "instance_type": null,
+    "numerical_values": {},
+    "property_labels": {},
+    "property_scores": {}
+  },
+  {
+    "assignment": {
+      "V0": 2,
+      "V1": 2,
+      "V2": 0,
+      "V3": 2
+    },
+    "score": 0.5947215345152007,
+    "label": 0,
+    "instance_text": null,
+    "instance_label_text": null,
+    "instance_type": null,
+    "numerical_values": {},
+    "property_labels": {},
+    "property_scores": {}
+  },
+  {
+    "assignment": {
+      "V0": 2,
+      "V1": 1,
+      "V2": 2,
+      "V3": 2
+    },
+    "score": 0.6700662916166793,
+    "label": 1,
+    "instance_text": null,
+    "instance_label_text": null,
+    "instance_type": null,
+    "numerical_values": {},
+    "property_labels": {},
+    "property_scores": {}
+  },
+  {
+    "assignment": {
+      "V0": 3,
+      "V1": 2,
+      "V2": 2,
+      "V3": 2
+    },
+    "score": 0.8702327497561158,
+    "label": 1,
+    "instance_text": null,
+    "instance_label_text": null,
+    "instance_type": null,
+    "numerical_values": {},
+    "property_labels": {},
+    "property_scores": {}
+  },
+  {
+    "assignment": {
+      "V0": 2,
+      "V1": 2,
+      "V2": 2,
+      "V3": 3
+    },
+    "score": 0.5759375159346225,
+    "label": 1,
+    "instance_text": null,
+    "instance_label_text": null,
+    "instance_type": null,
+    "numerical_values": {},
+    "property_labels": {},
+    "property_scores": {}
+  }
+]

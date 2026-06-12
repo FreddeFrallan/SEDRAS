@@ -1,0 +1,476 @@
+{
+  "version": 3,
+  "name": "environmental_impact_assessment_summary",
+  "metadata": {
+    "note": "Samples textualized via LLM using provided mapping.",
+    "model": "GEMINI_2_5_FLASH",
+    "instance_type": "Environmental Impact Assessment Summary"
+  },
+  "udd": {
+    "num_output_labels": 2,
+    "variables": {
+      "V0": {
+        "name": "V0",
+        "categories": 4,
+        "num_output_labels": 2,
+        "weights": {
+          "0": {
+            "0": 0.43087690228451314,
+            "1": 0.857681469684582,
+            "2": 0.34338082576026996,
+            "3": 0.44924896765913336
+          },
+          "1": {
+            "0": 0.8167252991067208,
+            "1": 0.814667703984267,
+            "2": 0.3366273704733081,
+            "3": 0.14113654935064995
+          }
+        },
+        "scores": {
+          "0": {
+            "0": 0.6372912536015921,
+            "1": 0.007266628094136238,
+            "2": 0.8929560253857212,
+            "3": 0.4443658483825548
+          },
+          "1": {
+            "0": 0.0,
+            "1": 0.9562333110132037,
+            "2": 0.1929343107993065,
+            "3": 0.8588038894098233
+          }
+        },
+        "variable_type": "categorical",
+        "spans": [],
+        "min_weight": null,
+        "max_weight": null,
+        "direction": null,
+        "variable_score": null
+      },
+      "V1": {
+        "name": "V1",
+        "categories": 3,
+        "num_output_labels": 2,
+        "weights": {
+          "0": {
+            "0": 0.06042103398679105,
+            "1": 0.9284849754634388,
+            "2": 0.47988611901304445
+          },
+          "1": {
+            "0": 0.0,
+            "1": 0.15415376944191236,
+            "2": 0.7923951303869737
+          }
+        },
+        "scores": {
+          "0": {
+            "0": 0.5078567282912415,
+            "1": 0.7668493304919778,
+            "2": 0.36127379073818794
+          },
+          "1": {
+            "0": 1.0,
+            "1": 0.7068234354415631,
+            "2": 0.9075248719106035
+          }
+        },
+        "variable_type": "categorical",
+        "spans": [],
+        "min_weight": null,
+        "max_weight": null,
+        "direction": null,
+        "variable_score": null
+      },
+      "V2": {
+        "name": "V2",
+        "categories": 4,
+        "num_output_labels": 2,
+        "weights": {
+          "0": {
+            "0": 0.9232124731240313,
+            "1": 0.6891680846529503,
+            "2": 0.5727892222774149,
+            "3": 0.508253867705189
+          },
+          "1": {
+            "0": 0.7829505154887441,
+            "1": 0.7912592072906155,
+            "2": 0.5169464745290364,
+            "3": 0.9960503893862552
+          }
+        },
+        "scores": {
+          "0": {
+            "0": 0.9271599872633501,
+            "1": 0.1750211140466788,
+            "2": 0.6652291486576076,
+            "3": 0.9245177533315972
+          },
+          "1": {
+            "0": 0.0,
+            "1": 0.5792205951136682,
+            "2": 1.0,
+            "3": 0.09016389852242604
+          }
+        },
+        "variable_type": "categorical",
+        "spans": [],
+        "min_weight": null,
+        "max_weight": null,
+        "direction": null,
+        "variable_score": null
+      },
+      "V3": {
+        "name": "V3",
+        "categories": 4,
+        "num_output_labels": 2,
+        "weights": {
+          "0": {
+            "0": 0.47337607163055867,
+            "1": 0.729272684672859,
+            "2": 0.618003704252405,
+            "3": 0.45539097709549203
+          },
+          "1": {
+            "0": 0.014254152526752079,
+            "1": 0.636941871693466,
+            "2": 0.3967255741319611,
+            "3": 0.33801761685763687
+          }
+        },
+        "scores": {
+          "0": {
+            "0": 0.5393854589570576,
+            "1": 0.0,
+            "2": 0.11367101965690048,
+            "3": 0.23309515734241276
+          },
+          "1": {
+            "0": 0.6871759701430993,
+            "1": 0.20838059481080318,
+            "2": 0.6307226329315747,
+            "3": 0.3635643504061252
+          }
+        },
+        "variable_type": "categorical",
+        "spans": [],
+        "min_weight": null,
+        "max_weight": null,
+        "direction": null,
+        "variable_score": null
+      }
+    },
+    "rules": [
+      {
+        "name": "R_0",
+        "var_a": "V2",
+        "val_a": 1,
+        "var_b": "V0",
+        "val_b": 0,
+        "weight": 0.29668229271589686,
+        "score": 1.0
+      },
+      {
+        "name": "R_1",
+        "var_a": "V3",
+        "val_a": 3,
+        "var_b": "V0",
+        "val_b": 2,
+        "weight": 0.629763957771873,
+        "score": 0.12934069867319845
+      },
+      {
+        "name": "R_2",
+        "var_a": "V1",
+        "val_a": 0,
+        "var_b": "V2",
+        "val_b": 1,
+        "weight": 0.001664280883967785,
+        "score": 0.2967317299069152
+      },
+      {
+        "name": "R_3",
+        "var_a": "V0",
+        "val_a": 2,
+        "var_b": "V2",
+        "val_b": 3,
+        "weight": 0.34388768902244776,
+        "score": 1.0
+      },
+      {
+        "name": "R_4",
+        "var_a": "V1",
+        "val_a": 2,
+        "var_b": "V3",
+        "val_b": 0,
+        "weight": 0.2127344561364201,
+        "score": 0.1713389884971881
+      }
+    ]
+  },
+  "dataset": [
+    {
+      "assignment": {
+        "V0": 3,
+        "V1": 1,
+        "V2": 3,
+        "V3": 2
+      },
+      "score": 0.5797854372982433,
+      "label": 0,
+      "instance_text": "The recent Environmental Impact Assessment meticulously reviewed a proposed Resource Extraction Operation, specifically focusing on its environmental footprint. Particular scrutiny was given to potential disturbances to adjacent Freshwater Systems, a major point of contention during the preliminary stages. The assessment ultimately identified a significant and Critical Environmental Risk if proper safeguards are not meticulously implemented throughout the project's duration. Fortunately, a comprehensive set of proposed mitigation strategies, including advanced treatment protocols, were deemed Likely Effective in minimizing the negative impacts of the Resource Extraction Operation. Protecting the integrity of the Freshwater Systems remains paramount, and ongoing vigilance will be essential. Should these measures be consistently applied, they are considered Likely Effective in maintaining ecological balance, even amidst a large-scale Resource Extraction Operation.",
+      "instance_label_text": {
+        "label": "Acceptable Impact",
+        "properties": {}
+      },
+      "instance_type": "Environmental Impact Assessment Summary",
+      "numerical_values": {},
+      "property_labels": {},
+      "property_scores": {}
+    },
+    {
+      "assignment": {
+        "V0": 0,
+        "V1": 2,
+        "V2": 2,
+        "V3": 1
+      },
+      "score": 0.49539874858509925,
+      "label": 1,
+      "instance_text": "The recent Environmental Impact Assessment for the **Residential Expansion Project** revealed significant concerns. This ambitious development, poised to transform vast swathes of land, has been flagged due to its potential impact on the delicate ecosystems within **Marine & Coastal Zones**, which are vital for local biodiversity and tourism. The assessment clearly indicates a **High Environmental Risk** associated with various stages of construction and long-term habitation. This risk necessitates careful consideration of mitigation strategies, for which preliminary proposals are deemed **Potentially Effective** if implemented rigorously. Project stakeholders now face the crucial task of ensuring these measures are not just theoretical but become practical solutions to safeguard our natural heritage, especially within the vulnerable **Marine & Coastal Zones**. Ultimately, while the **Residential Expansion Project** presents undeniable development opportunities, addressing its **High Environmental Risk** with **Potentially Effective** solutions is paramount for sustainable growth.",
+      "instance_label_text": {
+        "label": "Unacceptable Impact",
+        "properties": {}
+      },
+      "instance_type": "Environmental Impact Assessment Summary",
+      "numerical_values": {},
+      "property_labels": {},
+      "property_scores": {}
+    },
+    {
+      "assignment": {
+        "V0": 0,
+        "V1": 1,
+        "V2": 0,
+        "V3": 0
+      },
+      "score": 0.7612255940310596,
+      "label": 0,
+      "instance_text": "The recent Environmental Impact Assessment for the ambitious Residential Expansion Project has presented its preliminary findings. Overall, the project appears to carry a Low Environmental Risk, particularly concerning the terrestrial ecosystems adjacent to the proposed development. However, particular scrutiny was applied to potential impacts on the delicate local Freshwater Systems. Experts expressed concern that many of the proposed mitigation measures designed to protect these systems are currently Unlikely to be Effective in practice. This necessitates a critical re-evaluation of the project's approach to safeguarding aquatic environments before the Residential Expansion Project can move forward.",
+      "instance_label_text": {
+        "label": "Acceptable Impact",
+        "properties": {}
+      },
+      "instance_type": "Environmental Impact Assessment Summary",
+      "numerical_values": {},
+      "property_labels": {},
+      "property_scores": {}
+    },
+    {
+      "assignment": {
+        "V0": 2,
+        "V1": 0,
+        "V2": 1,
+        "V3": 3
+      },
+      "score": 0.34715512793485015,
+      "label": 1,
+      "instance_text": "The recent Environmental Impact Assessment for the proposed **Large-Scale Infrastructure** project has concluded its initial phase, offering valuable insights into potential ecological effects. Our findings indicate a noticeable impact on local **Terrestrial Ecosystems**, particularly concerning habitat fragmentation and biodiversity. While these concerns are significant, the overall project is categorized as presenting a **Moderate Environmental Risk** due to the localized nature of the most severe impacts. Thankfully, the proposed mitigation strategies, focusing on habitat restoration and compensatory measures, are projected to be **Highly Effective** in minimizing long-term damage. These measures, if implemented diligently, will help ensure a sustainable balance between development and ecological preservation, addressing the **Moderate Environmental Risk** associated with such **Large-Scale Infrastructure**.",
+      "instance_label_text": {
+        "label": "Unacceptable Impact",
+        "properties": {}
+      },
+      "instance_type": "Environmental Impact Assessment Summary",
+      "numerical_values": {},
+      "property_labels": {},
+      "property_scores": {}
+    },
+    {
+      "assignment": {
+        "V0": 2,
+        "V1": 0,
+        "V2": 3,
+        "V3": 3
+      },
+      "score": 0.5718214101978195,
+      "label": 0,
+      "instance_text": "The extensive plans for new `Large-Scale Infrastructure` demand a meticulous environmental impact assessment to safeguard our natural heritage. Special attention is being paid to potential disruptions across various `Terrestrial Ecosystems`, where delicate balances could be easily upset. Failing to address these potential impacts could easily create a `Critical Environmental Risk` for the region, impacting both flora and fauna. However, with careful planning and the implementation of proactive measures, our mitigation strategies are expected to be `Highly Effective` in minimizing adverse effects. By thoroughly understanding the complexities of the `Large-Scale Infrastructure` and its interaction with `Terrestrial Ecosystems`, we can ensure a sustainable path forward.",
+      "instance_label_text": {
+        "label": "Acceptable Impact",
+        "properties": {}
+      },
+      "instance_type": "Environmental Impact Assessment Summary",
+      "numerical_values": {},
+      "property_labels": {},
+      "property_scores": {}
+    },
+    {
+      "assignment": {
+        "V0": 2,
+        "V1": 2,
+        "V2": 3,
+        "V3": 1
+      },
+      "score": 0.5380221191304599,
+      "label": 0,
+      "instance_text": "The comprehensive Environmental Impact Assessment recently concluded its review of a significant **Large-Scale Infrastructure** development. This critical evaluation specifically honed in on the potential repercussions across various **Marine & Coastal Zones** adjacent to the proposed site. Experts identified a **Critical Environmental Risk** associated with potential habitat degradation and disruption to sensitive aquatic ecosystems, necessitating immediate attention. Without robust mitigation, the project could severely impact local biodiversity and the delicate balance of the coastal environment. Thankfully, the assessment also outlined several innovative and well-researched mitigation strategies, which are considered **Potentially Effective** in addressing these environmental concerns. Implementing these measures with diligence will be paramount to ensuring the project's ecological integrity.",
+      "instance_label_text": {
+        "label": "Acceptable Impact",
+        "properties": {}
+      },
+      "instance_type": "Environmental Impact Assessment Summary",
+      "numerical_values": {},
+      "property_labels": {},
+      "property_scores": {}
+    },
+    {
+      "assignment": {
+        "V0": 2,
+        "V1": 2,
+        "V2": 0,
+        "V3": 2
+      },
+      "score": 0.5947215345152007,
+      "label": 0,
+      "instance_text": "The recent Environmental Impact Assessment thoroughly scrutinized a proposed development focusing on Large-Scale Infrastructure. This project is strategically positioned within sensitive Marine & Coastal Zones, necessitating rigorous evaluation of its potential impacts. Despite its substantial scope, the assessment concluded that, with appropriate mitigation strategies in place, the initiative poses a Low Environmental Risk. Proposed management plans and monitoring protocols are deemed Likely Effective in safeguarding the delicate ecosystems. This positive outlook suggests a well-considered approach to development, ensuring that critical environmental aspects are properly addressed from the outset, leading to sustainable outcomes in these vital areas.",
+      "instance_label_text": {
+        "label": "Acceptable Impact",
+        "properties": {}
+      },
+      "instance_type": "Environmental Impact Assessment Summary",
+      "numerical_values": {},
+      "property_labels": {},
+      "property_scores": {}
+    },
+    {
+      "assignment": {
+        "V0": 2,
+        "V1": 1,
+        "V2": 2,
+        "V3": 2
+      },
+      "score": 0.6700662916166793,
+      "label": 1,
+      "instance_text": "The recent Environmental Impact Assessment has meticulously scrutinized the implications of a new Large-Scale Infrastructure project. Key findings highlight the significant concerns surrounding its potential impact on local Freshwater Systems. Indeed, the assessment has categorized this undertaking as presenting a High Environmental Risk, particularly due to the delicate balance of the surrounding ecosystems. While comprehensive mitigation strategies have been proposed, their long-term success is currently deemed Likely Effective, contingent upon rigorous monitoring and adaptive management. Ultimately, navigating the complexities of this High Environmental Risk to our precious Freshwater Systems will require constant vigilance throughout the development of the Large-Scale Infrastructure.",
+      "instance_label_text": {
+        "label": "Unacceptable Impact",
+        "properties": {}
+      },
+      "instance_type": "Environmental Impact Assessment Summary",
+      "numerical_values": {},
+      "property_labels": {},
+      "property_scores": {}
+    },
+    {
+      "assignment": {
+        "V0": 3,
+        "V1": 2,
+        "V2": 2,
+        "V3": 2
+      },
+      "score": 0.8702327497561158,
+      "label": 1,
+      "instance_text": "The recent environmental impact assessment meticulously scrutinized a proposed **Resource Extraction Operation**. This particular project, situated within delicate **Marine & Coastal Zones**, presented unique challenges for environmental protection. Indeed, the initial projections indicated a **High Environmental Risk** associated with its activities, prompting widespread concern. However, the comprehensive mitigation plan put forward by the developers is now considered **Likely Effective** in minimizing much of the potential ecological disruption. While vigilance remains paramount for any **Resource Extraction Operation**, especially in such vulnerable areas, the measures outlined provide a promising framework for responsible engagement.",
+      "instance_label_text": {
+        "label": "Unacceptable Impact",
+        "properties": {}
+      },
+      "instance_type": "Environmental Impact Assessment Summary",
+      "numerical_values": {},
+      "property_labels": {},
+      "property_scores": {}
+    },
+    {
+      "assignment": {
+        "V0": 2,
+        "V1": 2,
+        "V2": 2,
+        "V3": 3
+      },
+      "score": 0.5759375159346225,
+      "label": 1,
+      "instance_text": "When considering the development of **Large-Scale Infrastructure**, particularly within fragile **Marine & Coastal Zones**, a thorough Environmental Impact Assessment becomes an absolute necessity. Such ventures inherently carry a **High Environmental Risk**, demanding meticulous attention to detail and proactive planning. It is imperative that these assessments are not merely procedural, but genuinely **Highly Effective** in identifying potential threats and proposing robust mitigation strategies. This diligent effort ensures that our planet's delicate ecosystems are protected, fostering a future where progress harmonizes with nature. By embracing this rigorous approach, we can navigate complex projects with a clear conscience.",
+      "instance_label_text": {
+        "label": "Unacceptable Impact",
+        "properties": {}
+      },
+      "instance_type": "Environmental Impact Assessment Summary",
+      "numerical_values": {},
+      "property_labels": {},
+      "property_scores": {}
+    }
+  ],
+  "text_mapping": {
+    "instance_type": "Environmental Impact Assessment Summary",
+    "theme_summary": "This theme summarizes the findings of an environmental impact assessment for a project, detailing its type, the primary ecosystem it affects, the overall environmental risk identified, and the probable success of proposed mitigation strategies.",
+    "output_labels": {
+      "0": "Acceptable Impact",
+      "1": "Unacceptable Impact"
+    },
+    "output_properties": {
+      "Impact_Classification": {
+        "0": "Beneficial",
+        "1": "Neutral",
+        "2": "Adverse"
+      },
+      "Estimated_Carbon_Emissions": {
+        "type": "numerical",
+        "value_range": {
+          "min": 0,
+          "max": 750000,
+          "unit": "tons CO2e/year"
+        },
+        "description": "Annual CO2 equivalent emissions resulting from the project."
+      }
+    },
+    "variables": {
+      "V0": {
+        "role": "type of development project assessed",
+        "categories": {
+          "0": "Residential Expansion Project",
+          "1": "Industrial Facility Development",
+          "2": "Large-Scale Infrastructure",
+          "3": "Resource Extraction Operation"
+        }
+      },
+      "V1": {
+        "role": "primary ecosystem impacted by the project",
+        "categories": {
+          "0": "Terrestrial Ecosystems",
+          "1": "Freshwater Systems",
+          "2": "Marine & Coastal Zones"
+        }
+      },
+      "V2": {
+        "role": "overall environmental risk level identified",
+        "categories": {
+          "0": "Low Environmental Risk",
+          "1": "Moderate Environmental Risk",
+          "2": "High Environmental Risk",
+          "3": "Critical Environmental Risk"
+        }
+      },
+      "V3": {
+        "role": "probable success of proposed mitigation strategies",
+        "categories": {
+          "0": "Unlikely to be Effective",
+          "1": "Potentially Effective",
+          "2": "Likely Effective",
+          "3": "Highly Effective"
+        }
+      }
+    },
+    "template": "An environmental impact assessment for a {var.V0} primarily affecting {var.V1} identifies a {var.V2}, with proposed mitigation strategies deemed {var.V3}."
+  },
+  "instance_hint_used": null,
+  "textualization_level": "files",
+  "rendered_documents": [
+    {
+      "path": "renders/files/environmental_impact_assessment_summary_files_20260119_205426.pdf",
+      "created_at": "2026-01-19T19:54:39Z",
+      "mode": "RANDOM"
+    }
+  ]
+}

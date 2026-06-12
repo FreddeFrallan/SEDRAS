@@ -1,0 +1,29 @@
+{
+  "udd_search_iterations": 25,
+  "samples_per_label": {
+    "0": 5,
+    "1": 5
+  },
+  "total_samples_per_label": {
+    "0": 75,
+    "1": 69
+  },
+  "total_number_of_assignments": 144,
+  "analysis_results": {
+    "total_combinations": 144,
+    "label_counts": {
+      "0": 75,
+      "1": 69
+    },
+    "label_fractions": {
+      "0": 0.5208333333333334,
+      "1": 0.4791666666666667
+    },
+    "avg_decisiveness": 0.196697848260969,
+    "avg_top_score": 0.5659230590062582,
+    "max_fraction_gap_from_uniform": 0.02083333333333337,
+    "min_decisiveness_overall": 0.597341852321119,
+    "property_imbalance_avg": 0.0,
+    "property_imbalances": {}
+  }
+}

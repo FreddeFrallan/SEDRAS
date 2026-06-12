@@ -1,0 +1,13 @@
+{
+  "title": "EcoAudit: Environmental Impact Assessment Analysis",
+  "blocks": [
+    "generic_header(title='EcoAudit: Environmental Impact Assessment Analysis', subtitle='A comprehensive review of resource extraction proposals classified by ecological risk factors.')",
+    "generate_text_paragraph(llm_instruction='Write a brief executive summary explaining the criteria for distinguishing between acceptable and unacceptable environmental impacts in resource extraction projects.', title='Executive Summary')",
+    "render_double_label_table(label_a=0, label_b=1, header_color='#2E8B57', title='Comparative Risk Assessment: Acceptable vs. Unacceptable Cases', start_sample_range=0, end_sample_range=4)",
+    "render_spotlight(index=0, title='Case Study: Model of Acceptable Mitigation')",
+    "render_spotlight(index=7, title='Case Study: Critical Violation Example')",
+    "render_list_by_label(label=0, text_color='#2F4F4F', tag_name='APPROVED', title='Full Register of Approved Projects (Acceptable Impact)', start_sample_range=4, end_sample_range=7)",
+    "render_table_by_label(label=1, header_color='#8B0000', row_color='#FFE4E1', title='Critical Review Log: Projects with Unacceptable Impact', start_sample_range=8, end_sample_range=10)",
+    "generate_text_paragraph(llm_instruction='Generate a concluding statement summarizing the importance of rigorous environmental auditing for sustainable development.', title='Conclusion')"
+  ]
+}

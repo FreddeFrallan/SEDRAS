@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SEDRAS Benchmark Leaderboard</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">SEDRAS Benchmark</p>
+        <h1>Official Leaderboard</h1>
+      </div>
+      <button id="benchmarkButton" class="primary-action" type="button">
+        Benchmark your model
+      </button>
+    </header>
+
+    <main class="page-shell">
+      <nav class="tabs" aria-label="Benchmark views">
+        <button class="tab is-active" type="button">Leaderboard</button>
+      </nav>
+
+      <section class="leaderboard-panel" aria-labelledby="leaderboardTitle">
+        <div class="panel-header">
+          <div>
+            <h2 id="leaderboardTitle">Model Performance</h2>
+            <p>Ranked by benchmark accuracy across current public submissions.</p>
+          </div>
+          <div class="metric-summary">
+            <span id="modelCount">0</span>
+            <span>models</span>
+          </div>
+        </div>
+
+        <div id="leaderboardList" class="leaderboard-list" aria-live="polite">
+          <div class="loading-row">Loading leaderboard...</div>
+        </div>
+      </section>
+    </main>
+
+    <div id="modalBackdrop" class="modal-backdrop" hidden>
+      <section
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+      >
+        <div class="modal-header">
+          <h2 id="modalTitle">Benchmark Your Model</h2>
+          <button id="closeModalButton" class="icon-button" type="button" aria-label="Close">
+            &times;
+          </button>
+        </div>
+        <p>
+          Submission instructions will live on GitHub. For now, run the local
+          remote HTTP benchmark flow and prepare your endpoint URL, model name,
+          and evaluation summary.
+        </p>
+        <a class="placeholder-link" href="#" aria-disabled="true">GitHub instructions coming soon</a>
+      </section>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
+

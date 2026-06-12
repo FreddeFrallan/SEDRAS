@@ -1,0 +1,15 @@
+{
+    "dynamic": "static",
+    "file_rendering": [
+        {
+            "num_files": 1,
+            "rendering_LLM_model": "gemini/gemini-2.5-pro",
+            "rendering_mode": "RANDOM"
+        }
+    ],
+    "genetic_search_max_iterations": 2500,
+    "max_genetic_search_configurations": 4000,
+    "num_samples": 10,
+    "textualization_level": "files",
+    "udd_complexity": 1
+}

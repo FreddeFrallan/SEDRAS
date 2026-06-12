@@ -1,0 +1,22 @@
+{
+  "analysis": {
+    "total_combinations": 144,
+    "label_counts": {
+      "0": 75,
+      "1": 69
+    },
+    "label_fractions": {
+      "0": 0.5208333333333334,
+      "1": 0.4791666666666667
+    },
+    "avg_decisiveness": 0.196697848260969,
+    "avg_top_score": 0.5659230590062582,
+    "max_fraction_gap_from_uniform": 0.02083333333333337,
+    "min_decisiveness_overall": 0.597341852321119,
+    "property_imbalance_avg": 0.0,
+    "property_imbalances": {}
+  },
+  "save_path": "udd_paper_datasets_balanced_udd/static/raw/data_ns10_nv4_nr5_c3-4_nnv0_ol2_props0",
+  "main_name": "udd_paper_datasets_balanced_udd/static/raw/data",
+  "num_output_labels": 2
+}

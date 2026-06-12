@@ -1,0 +1,33 @@
+{
+  "analysis": {
+    "total_combinations": 192,
+    "label_counts": {
+      "0": 96,
+      "1": 96
+    },
+    "label_fractions": {
+      "0": 0.5,
+      "1": 0.5
+    },
+    "avg_decisiveness": 0.2789132292381431,
+    "avg_top_score": 0.6119623980077223,
+    "max_fraction_gap_from_uniform": 0.0,
+    "min_decisiveness_overall": 0.7442817014662075,
+    "property_imbalance_avg": 0.0,
+    "property_imbalances": {}
+  },
+  "save_path": "udd_paper_datasets_balanced_udd/static/FILES/data_ns10_nv4_nr5_c3-4_nnv0_ol2_props0",
+  "main_name": "udd_paper_datasets_balanced_udd/static/FILES/data",
+  "num_output_labels": 2,
+  "rendered_instances": {
+    "files": {
+      "environmental_impact_assessment_summary": [
+        {
+          "path": "renders/files/environmental_impact_assessment_summary_files_20260119_205426.pdf",
+          "created_at": "2026-01-19T19:54:39Z",
+          "mode": "RANDOM"
+        }
+      ]
+    }
+  }
+}

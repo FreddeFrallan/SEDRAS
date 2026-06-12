@@ -1,0 +1,2228 @@
+{
+  "run_id": "6c83c1d7-f3ec-4e93-8fe4-de016ec142e8",
+  "created_at": "2026-05-25T21:11:35Z",
+  "model_name": "GPT_4O",
+  "instance_name": "raw_samples",
+  "representation_level": "raw",
+  "interactive_mode": "STATIC",
+  "results": {
+    "total": 10,
+    "correct": 6,
+    "accuracy": 0.6,
+    "full_accuracy": 0,
+    "confusion_matrix": {
+      "0": {
+        "0": 2,
+        "1": 3
+      },
+      "1": {
+        "0": 1,
+        "1": 4
+      }
+    },
+    "macro_precision": 0.6190476190476191,
+    "macro_recall": 0.6000000000000001,
+    "macro_f1": 0.5833333333333333,
+    "per_label": {
+      "0": {
+        "precision": 0.6666666666666666,
+        "recall": 0.4,
+        "f1": 0.5,
+        "tnr": 0.8,
+        "support": 5
+      },
+      "1": {
+        "precision": 0.5714285714285714,
+        "recall": 0.8,
+        "f1": 0.6666666666666666,
+        "tnr": 0.4,
+        "support": 5
+      }
+    },
+    "balanced_accuracy": 0.6000000000000001,
+    "variable_order": [
+      "V0",
+      "V1",
+      "V2",
+      "V3"
+    ],
+    "label_names": {
+      "0": "Label 0",
+      "1": "Label 1"
+    },
+    "all_output_accuracy": null,
+    "model": "gpt-4o",
+    "mode": "theory_then_code",
+    "theory_text": "To formulate a theory to predict the categorical outcome based on input variables V0, V1, V2, and V3, we need to analyze the labeled examples provided. We will identify patterns or rules that distinguish Label 0 from Label 1 by examining the values of the input variables and their associated labels.\n\n### Analysis of the Data\n\nFrom the labeled examples, we can derive the following potential patterns:\n\n1. **Label 0**:\n   - V0 frequently takes values \\(1\\) or \\(2\\).\n   - V1 seems to be evenly distributed.\n   - V2 often takes the value \\(2\\).\n   - V3 tends to favor the value \\(1\\) or \\(3\\).\n\n2. **Label 1**:\n   - V0 often takes the value \\(0\\).\n   - V1 frequently takes higher values (greater than 1).\n   - V2 tends to favor values lower than \\(2\\).\n   - V3 prefers the value \\(0\\).\n\n### Theory Formation\n\nBased on these observations, we can propose a decision-making rule to classify these examples:\n\n#### Decision Logic\n```python\ndef classify(x: list[float]) -> int:\n    V0, V1, V2, V3 = x\n\n    if V0 == 0:\n        # If V0 is 0, further refine based on V1 and V2\n        if V1 > 1 or (V1 == 1 and V3 == 0):\n            return 1  # Likely Label 1 if V1 is high or V1 is 1 and V3 is 0\n        else:\n            return 0  # Otherwise Label 0\n    \n    if V0 == 1:\n        # If V0 is 1, primarily depend on V3\n        if V3 == 1:\n            return 0  # Label 0 when V3 is 1\n        else:\n            return 1  # Label 1 otherwise\n\n    if V0 == 2:\n        # When V0 is 2, focus on other variables\n        if V2 == 2 and (V1 < 2):\n            return 0  # Label 0 when V2 is 2 and V1 is less than 2\n        else:\n            return 0  # Generally, conditions favor Label 0 otherwise\n\n    return 0  # Default to Label 0 if the conditions don't match\n```\n\n#### Explanation of the Logic\n- **Primary Focus on V0**: If \\( V0 = 0 \\), this strongly correlates with Label 1, but additional checks on V1 and V3 are needed to finalize, relying on higher V1 values or V3 being 0 to indicate Label 1.\n- **V0 = 1** condition generally affirms Label 1, unless V3 specifically leads to Label 0.\n- **V0 = 2** mainly correlates with Label 0, particularly when the combined condition of V2 being 2 and V1 being relatively low.\n\n### Conclusion\nThe proposed classification logic uses hierarchical decision-making based on sequential rules and captures the patterns identified in the provided examples. Each branch of the logic clearly defines the decision for assigning a label, ensuring full coverage of possible input combinations based on observed patterns in provided data. This approach aims to balance between accuracy and interpretability, with the model being deterministic and precise for each input structure.",
+    "classifier_code": "def classify(x: list[float]) -> dict:\n    V0, V1, V2, V3 = x\n    label = 0\n    \n    if V0 == 0:\n        if V1 > 1 or (V1 == 1 and V3 == 0):\n            label = 1\n    elif V0 == 1:\n        if V3 != 1:\n            label = 1\n    elif V0 == 2:\n        if not (V2 == 2 and V1 < 2):\n            label = 1\n\n    return {'label': label}\n",
+    "num_output_labels": 2,
+    "output_properties": [],
+    "theory_time": null,
+    "interactive_session": {
+      "final_message": {
+        "role": "assistant",
+        "content": "To formulate a theory to predict the categorical outcome based on input variables V0, V1, V2, and V3, we need to analyze the labeled examples provided. We will identify patterns or rules that distinguish Label 0 from Label 1 by examining the values of the input variables and their associated labels.\n\n### Analysis of the Data\n\nFrom the labeled examples, we can derive the following potential patterns:\n\n1. **Label 0**:\n   - V0 frequently takes values \\(1\\) or \\(2\\).\n   - V1 seems to be evenly distributed.\n   - V2 often takes the value \\(2\\).\n   - V3 tends to favor the value \\(1\\) or \\(3\\).\n\n2. **Label 1**:\n   - V0 often takes the value \\(0\\).\n   - V1 frequently takes higher values (greater than 1).\n   - V2 tends to favor values lower than \\(2\\).\n   - V3 prefers the value \\(0\\).\n\n### Theory Formation\n\nBased on these observations, we can propose a decision-making rule to classify these examples:\n\n#### Decision Logic\n```python\ndef classify(x: list[float]) -> int:\n    V0, V1, V2, V3 = x\n\n    if V0 == 0:\n        # If V0 is 0, further refine based on V1 and V2\n        if V1 > 1 or (V1 == 1 and V3 == 0):\n            return 1  # Likely Label 1 if V1 is high or V1 is 1 and V3 is 0\n        else:\n            return 0  # Otherwise Label 0\n    \n    if V0 == 1:\n        # If V0 is 1, primarily depend on V3\n        if V3 == 1:\n            return 0  # Label 0 when V3 is 1\n        else:\n            return 1  # Label 1 otherwise\n\n    if V0 == 2:\n        # When V0 is 2, focus on other variables\n        if V2 == 2 and (V1 < 2):\n            return 0  # Label 0 when V2 is 2 and V1 is less than 2\n        else:\n            return 0  # Generally, conditions favor Label 0 otherwise\n\n    return 0  # Default to Label 0 if the conditions don't match\n```\n\n#### Explanation of the Logic\n- **Primary Focus on V0**: If \\( V0 = 0 \\), this strongly correlates with Label 1, but additional checks on V1 and V3 are needed to finalize, relying on higher V1 values or V3 being 0 to indicate Label 1.\n- **V0 = 1** condition generally affirms Label 1, unless V3 specifically leads to Label 0.\n- **V0 = 2** mainly correlates with Label 0, particularly when the combined condition of V2 being 2 and V1 being relatively low.\n\n### Conclusion\nThe proposed classification logic uses hierarchical decision-making based on sequential rules and captures the patterns identified in the provided examples. Each branch of the logic clearly defines the decision for assigning a label, ensuring full coverage of possible input combinations based on observed patterns in provided data. This approach aims to balance between accuracy and interpretability, with the model being deterministic and precise for each input structure."
+      },
+      "messages": [
+        {
+          "role": "user",
+          "content": "You are a scientific researcher tasked with formulating a theory to explain a categorical outcome based on several input variables. There may also be additional output properties associated with certain outcomes, these should also be predicted.\n We aim to predict the outcome by understanding the relationships between inputs and the outcome.\nThe goal is to produce a theory that not only accurately predicts the outcome, but is also interpretable and grounded in the provided data.\nAdditionally, the theory will be evaluated on unseen data to assess its generalization capabilities.\n\n\nOutput labels (2 categories): 0: Label 0, 1: Label 1\n\nLabeled examples:\nLabels: Label 0 | V0=1, V1=0, V2=2, V3=1\nLabels: Label 1 | V0=0, V1=1, V2=2, V3=0\nLabels: Label 1 | V0=2, V1=3, V2=1, V3=0\nLabels: Label 0 | V0=0, V1=2, V2=2, V3=0\nLabels: Label 0 | V0=2, V1=1, V2=2, V3=3\nLabels: Label 0 | V0=2, V1=2, V2=0, V3=3\nLabels: Label 1 | V0=1, V1=2, V2=1, V3=0\nLabels: Label 1 | V0=0, V1=3, V2=1, V3=1\nLabels: Label 1 | V0=0, V1=0, V2=2, V3=0\nLabels: Label 0 | V0=2, V1=2, V2=1, V3=2\n\nTHEORY requirements:\n- Provide a clear description of the decision logic that maps integer variables to the correct label among: Output labels (2 categories): 0: Label 0, 1: Label 1.\n- The theory must be unambiguous and fully deterministic.\n- Make sure to cover all possible input assignments in your theory. There is no noise in the data, so a good theory should be able to explain all observed data.\n- You are allowed to provide equations, rules, pseudocode, or python-like code snippets to explain your theory.\n- One must be able to follow your theory to a concrete decision for any possible input assignment.\n\nImplementation constraints (for your awareness):\n- At a later stage, your produced theory will be compiled into a function with signature: def classify(x: list[float]) -> int.\n- It is therefore important that you explicitly name each variable that you are referring to in your theory."
+        },
+        {
+          "role": "assistant",
+          "content": "To formulate a theory to predict the categorical outcome based on input variables V0, V1, V2, and V3, we need to analyze the labeled examples provided. We will identify patterns or rules that distinguish Label 0 from Label 1 by examining the values of the input variables and their associated labels.\n\n### Analysis of the Data\n\nFrom the labeled examples, we can derive the following potential patterns:\n\n1. **Label 0**:\n   - V0 frequently takes values \\(1\\) or \\(2\\).\n   - V1 seems to be evenly distributed.\n   - V2 often takes the value \\(2\\).\n   - V3 tends to favor the value \\(1\\) or \\(3\\).\n\n2. **Label 1**:\n   - V0 often takes the value \\(0\\).\n   - V1 frequently takes higher values (greater than 1).\n   - V2 tends to favor values lower than \\(2\\).\n   - V3 prefers the value \\(0\\).\n\n### Theory Formation\n\nBased on these observations, we can propose a decision-making rule to classify these examples:\n\n#### Decision Logic\n```python\ndef classify(x: list[float]) -> int:\n    V0, V1, V2, V3 = x\n\n    if V0 == 0:\n        # If V0 is 0, further refine based on V1 and V2\n        if V1 > 1 or (V1 == 1 and V3 == 0):\n            return 1  # Likely Label 1 if V1 is high or V1 is 1 and V3 is 0\n        else:\n            return 0  # Otherwise Label 0\n    \n    if V0 == 1:\n        # If V0 is 1, primarily depend on V3\n        if V3 == 1:\n            return 0  # Label 0 when V3 is 1\n        else:\n            return 1  # Label 1 otherwise\n\n    if V0 == 2:\n        # When V0 is 2, focus on other variables\n        if V2 == 2 and (V1 < 2):\n            return 0  # Label 0 when V2 is 2 and V1 is less than 2\n        else:\n            return 0  # Generally, conditions favor Label 0 otherwise\n\n    return 0  # Default to Label 0 if the conditions don't match\n```\n\n#### Explanation of the Logic\n- **Primary Focus on V0**: If \\( V0 = 0 \\), this strongly correlates with Label 1, but additional checks on V1 and V3 are needed to finalize, relying on higher V1 values or V3 being 0 to indicate Label 1.\n- **V0 = 1** condition generally affirms Label 1, unless V3 specifically leads to Label 0.\n- **V0 = 2** mainly correlates with Label 0, particularly when the combined condition of V2 being 2 and V1 being relatively low.\n\n### Conclusion\nThe proposed classification logic uses hierarchical decision-making based on sequential rules and captures the patterns identified in the provided examples. Each branch of the logic clearly defines the decision for assigning a label, ensuring full coverage of possible input combinations based on observed patterns in provided data. This approach aims to balance between accuracy and interpretability, with the model being deterministic and precise for each input structure."
+        }
+      ],
+      "num_turns": 1,
+      "num_tool_calls": 0,
+      "terminated_reason": "static_mode",
+      "session_data": null,
+      "usage": [
+        {
+          "completion_tokens": 711,
+          "prompt_tokens": 578,
+          "total_tokens": 1289,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          }
+        }
+      ]
+    },
+    "usage": [
+      {
+        "completion_tokens": 711,
+        "prompt_tokens": 578,
+        "total_tokens": 1289,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        }
+      }
+    ],
+    "unseen_samples_evaluation": {
+      "total": 134,
+      "correct": 66,
+      "accuracy": 0.4925373134328358,
+      "full_accuracy": 0,
+      "confusion_matrix": {
+        "0": {
+          "0": 20,
+          "1": 50
+        },
+        "1": {
+          "0": 18,
+          "1": 46
+        }
+      },
+      "macro_precision": 0.5027412280701754,
+      "macro_recall": 0.5022321428571428,
+      "macro_f1": 0.47268518518518515,
+      "per_label": {
+        "0": {
+          "precision": 0.5263157894736842,
+          "recall": 0.2857142857142857,
+          "f1": 0.37037037037037035,
+          "tnr": 0.71875,
+          "support": 70
+        },
+        "1": {
+          "precision": 0.4791666666666667,
+          "recall": 0.71875,
+          "f1": 0.575,
+          "tnr": 0.2857142857142857,
+          "support": 64
+        }
+      },
+      "balanced_accuracy": 0.5022321428571428,
+      "variable_order": [
+        "V0",
+        "V1",
+        "V2",
+        "V3"
+      ],
+      "label_names": {
+        "0": "Label 0",
+        "1": "Label 1"
+      },
+      "per_sample": [
+        {
+          "x": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "label": 1,
+          "pred": 0,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "label": 1,
+          "pred": 0,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            0,
+            0,
+            0,
+            2
+          ],
+          "label": 1,
+          "pred": 0,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            0,
+            0,
+            0,
+            3
+          ],
+          "label": 1,
+          "pred": 0,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            0,
+            0,
+            1,
+            0
+          ],
+          "label": 1,
+          "pred": 0,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": 1,
+          "pred": 0,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            0,
+            0,
+            1,
+            2
+          ],
+          "label": 1,
+          "pred": 0,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            0,
+            0,
+            1,
+            3
+          ],
+          "label": 1,
+          "pred": 0,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            0,
+            0,
+            2,
+            1
+          ],
+          "label": 0,
+          "pred": 0,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            0,
+            0,
+            2,
+            2
+          ],
+          "label": 0,
+          "pred": 0,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            0,
+            0,
+            2,
+            3
+          ],
+          "label": 0,
+          "pred": 0,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "label": 1,
+          "pred": 0,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            0,
+            1,
+            0,
+            2
+          ],
+          "label": 1,
+          "pred": 0,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            0,
+            1,
+            0,
+            3
+          ],
+          "label": 1,
+          "pred": 0,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            0,
+            1,
+            1,
+            0
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            0,
+            1,
+            1,
+            1
+          ],
+          "label": 1,
+          "pred": 0,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            0,
+            1,
+            1,
+            2
+          ],
+          "label": 1,
+          "pred": 0,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            0,
+            1,
+            1,
+            3
+          ],
+          "label": 1,
+          "pred": 0,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            0,
+            1,
+            2,
+            1
+          ],
+          "label": 0,
+          "pred": 0,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            0,
+            1,
+            2,
+            2
+          ],
+          "label": 0,
+          "pred": 0,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "label": 0,
+          "pred": 0,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            0,
+            2,
+            0,
+            0
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            0,
+            2,
+            0,
+            1
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            0,
+            2,
+            0,
+            2
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            0,
+            2,
+            0,
+            3
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            0,
+            2,
+            1,
+            0
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            0,
+            2,
+            1,
+            1
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            0,
+            2,
+            1,
+            2
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            0,
+            2,
+            1,
+            3
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            0,
+            2,
+            2,
+            1
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            0,
+            2,
+            2,
+            2
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            0,
+            2,
+            2,
+            3
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            0,
+            3,
+            0,
+            0
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            0,
+            3,
+            0,
+            1
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            0,
+            3,
+            0,
+            2
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            0,
+            3,
+            0,
+            3
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            0,
+            3,
+            1,
+            0
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            0,
+            3,
+            1,
+            2
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            0,
+            3,
+            1,
+            3
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            0,
+            3,
+            2,
+            0
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            0,
+            3,
+            2,
+            1
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            0,
+            3,
+            2,
+            2
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            0,
+            3,
+            2,
+            3
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "label": 1,
+          "pred": 0,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            1,
+            0,
+            0,
+            2
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            0,
+            0,
+            3
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            0,
+            1,
+            1
+          ],
+          "label": 0,
+          "pred": 0,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            1,
+            0,
+            1,
+            2
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            0,
+            1,
+            3
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            0,
+            2,
+            0
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            0,
+            2,
+            2
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            0,
+            2,
+            3
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            1,
+            0,
+            1
+          ],
+          "label": 1,
+          "pred": 0,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            1,
+            1,
+            0,
+            2
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            1,
+            0,
+            3
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "label": 0,
+          "pred": 0,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            1,
+            1,
+            1,
+            2
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            1,
+            1,
+            3
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            1,
+            2,
+            0
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            1,
+            2,
+            1
+          ],
+          "label": 0,
+          "pred": 0,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            1,
+            2,
+            3
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            2,
+            0,
+            0
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            2,
+            0,
+            1
+          ],
+          "label": 0,
+          "pred": 0,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            1,
+            2,
+            0,
+            2
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            2,
+            0,
+            3
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            2,
+            1,
+            1
+          ],
+          "label": 0,
+          "pred": 0,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            1,
+            2,
+            1,
+            2
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            2,
+            1,
+            3
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            2,
+            2,
+            0
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            2,
+            2,
+            1
+          ],
+          "label": 0,
+          "pred": 0,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            1,
+            2,
+            2,
+            2
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            2,
+            2,
+            3
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            3,
+            0,
+            0
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            3,
+            0,
+            1
+          ],
+          "label": 1,
+          "pred": 0,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            1,
+            3,
+            0,
+            2
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            3,
+            0,
+            3
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            3,
+            1,
+            0
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            3,
+            1,
+            1
+          ],
+          "label": 0,
+          "pred": 0,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            1,
+            3,
+            1,
+            2
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            3,
+            1,
+            3
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            3,
+            2,
+            0
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            3,
+            2,
+            1
+          ],
+          "label": 0,
+          "pred": 0,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            1,
+            3,
+            2,
+            2
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            1,
+            3,
+            2,
+            3
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            0,
+            0,
+            0
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            0,
+            0,
+            1
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            0,
+            0,
+            2
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            0,
+            0,
+            3
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            0,
+            1,
+            0
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            0,
+            1,
+            1
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            0,
+            1,
+            2
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            0,
+            1,
+            3
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            0,
+            2,
+            0
+          ],
+          "label": 0,
+          "pred": 0,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            2,
+            0,
+            2,
+            1
+          ],
+          "label": 0,
+          "pred": 0,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            2,
+            0,
+            2,
+            2
+          ],
+          "label": 0,
+          "pred": 0,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            2,
+            0,
+            2,
+            3
+          ],
+          "label": 0,
+          "pred": 0,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            2,
+            1,
+            0,
+            0
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            1,
+            0,
+            1
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            1,
+            0,
+            2
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            1,
+            0,
+            3
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            1,
+            1,
+            0
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            1,
+            1,
+            1
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            1,
+            1,
+            2
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            1,
+            1,
+            3
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            1,
+            2,
+            0
+          ],
+          "label": 1,
+          "pred": 0,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            2,
+            1,
+            2,
+            1
+          ],
+          "label": 0,
+          "pred": 0,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            2,
+            1,
+            2,
+            2
+          ],
+          "label": 0,
+          "pred": 0,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 0
+          }
+        },
+        {
+          "x": [
+            2,
+            2,
+            0,
+            0
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            2,
+            0,
+            1
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            2,
+            0,
+            2
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            2,
+            1,
+            0
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            2,
+            1,
+            1
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            2,
+            1,
+            3
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            2,
+            2,
+            0
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            2,
+            2,
+            1
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            2,
+            2,
+            3
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            3,
+            0,
+            0
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            3,
+            0,
+            1
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            3,
+            0,
+            2
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            3,
+            0,
+            3
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            3,
+            1,
+            1
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            3,
+            1,
+            2
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            3,
+            1,
+            3
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            3,
+            2,
+            0
+          ],
+          "label": 1,
+          "pred": 1,
+          "correct": true,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            3,
+            2,
+            1
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            3,
+            2,
+            2
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        },
+        {
+          "x": [
+            2,
+            3,
+            2,
+            3
+          ],
+          "label": 0,
+          "pred": 1,
+          "correct": false,
+          "property_labels": {},
+          "raw_output": {
+            "label": 1
+          }
+        }
+      ],
+      "all_output_accuracy": 0.4925373134328358,
+      "model": "gpt-4o",
+      "mode": "theory_then_code",
+      "theory_text": "",
+      "classifier_code": "",
+      "num_output_labels": 2,
+      "output_properties": []
+    }
+  },
+  "full_evaluation_config": {
+    "config_key": "in_memory_config_1",
+    "dataset_paths": [
+      "/home/fredde/Documents/Github/SEDRAS-Cleaning/Tests/Test_Dataset-ns10_nv4_nr5_c3-4_nnv0_ol2_props0"
+    ],
+    "instance_names": [
+      "raw_samples"
+    ],
+    "model_names": [
+      {
+        "litellm": "gpt-4o",
+        "native": "gpt-4o",
+        "variant": null,
+        "reasoning_effort": null
+      }
+    ],
+    "levels": [
+      "raw"
+    ],
+    "num_iterations": 1,
+    "return_per_sample": false,
+    "max_workers": 1,
+    "timeout_per_task": null,
+    "debug": null,
+    "interactive_config": {
+      "mode": "static",
+      "oracle_config": {
+        "llm_model": {
+          "litellm": "gpt-4o",
+          "native": "gpt-4o",
+          "variant": null,
+          "reasoning_effort": null
+        },
+        "backend": "native",
+        "verbose": false,
+        "kwargs": {}
+      },
+      "number_of_oracle_samples": 20,
+      "max_experiments": 0,
+      "minimum_number_of_experiments": null,
+      "number_of_intro_samples": 10,
+      "max_retrievals_per_question": 3,
+      "max_turns": 20,
+      "verbose": false
+    }
+  },
+  "session_data": null
+}
